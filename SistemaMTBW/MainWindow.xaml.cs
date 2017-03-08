@@ -74,7 +74,7 @@ namespace SistemaMTBW
 
         private void PonTexto()
         {
-           if(PokemonGBAFrameWork.SistemaMTBW.EstaActivadoElNuevoSistema(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
+           if(PokemonGBAFrameWork.SistemaMTBW.EstaActivado(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
             {
                 btnPonerOQuitar.Content = "Volver al sistema anterior";
             }
@@ -86,14 +86,14 @@ namespace SistemaMTBW
 
         private void btnPonerOQuitar_Click(object sender, RoutedEventArgs e)
         {
-            if (PokemonGBAFrameWork.SistemaMTBW.EstaActivadoElNuevoSistema(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
+            if (PokemonGBAFrameWork.SistemaMTBW.EstaActivado(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
             {
-                PokemonGBAFrameWork.SistemaMTBW.DesactivarNuevoSistema(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
+                PokemonGBAFrameWork.SistemaMTBW.Desactivar(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
              
             }
             else
             {
-                PokemonGBAFrameWork.SistemaMTBW.ActivarNuevoSistema(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
+                PokemonGBAFrameWork.SistemaMTBW.Activar(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
    
             }
             PonTexto();
