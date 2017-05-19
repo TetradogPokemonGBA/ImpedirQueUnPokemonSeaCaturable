@@ -32,7 +32,8 @@ namespace SistemaMTBW
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Esta aplicación quita y pone el mensaje que da el profesor oak\nCreditos:Knizz por la investigacion y a SkySpecial15 por publicarlo","Sobre la App");
+        	if(MessageBox.Show("Esta aplicación quita y pone el mensaje que da el profesor oak\nCreditos:Knizz por la investigacion y a SkySpecial15 por publicarlo\n¿Quieres ver el código fuente?","Sobre la App",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)
+        		System.Diagnostics.Process.Start("https://github.com/TetradogPokemonGBA/QuitarMensajeBatallaOak");
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
