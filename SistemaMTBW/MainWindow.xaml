@@ -1,26 +1,42 @@
-﻿<Window x:Class="SistemaMTBW.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SistemaMTBW"
-        mc:Ignorable="d"
-        Title="Sistema MT Blanco y Negro" Height="154.674" Width="181.941" WindowStyle="ToolWindow" ResizeMode="CanMinimize">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="79*"/>
-            <RowDefinition Height="31*"/>
-        </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="Cargar Rom" Click="MenuItem_Click_1" />
-            <MenuItem Header="   "/>
-            <MenuItem Header="Sobre" Click="MenuItem_Click"/>
-        </Menu>
-        <Image x:Name="imgDecoración" Grid.Row="1"/>
-        <Button x:Name="btnPonerOQuitar" Grid.Row="2" Content="Poner Sistema MT BW!" IsEnabled="False" Click="btnPonerOQuitar_Click"/>
-    </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="SistemaMTBW.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SistemaMTBW"
+	mc:Ignorable="d"
+	Title="Quitar mensaje Oak Batalla"
+	WindowStyle="ToolWindow"
+	ResizeMode="CanMinimize"
+	Width="281"
+	Height="226">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="20*" />
+			<RowDefinition
+				Height="79*" />
+			<RowDefinition
+				Height="31*" />
+		</Grid.RowDefinitions>
+		<Menu>
+			<MenuItem
+				Header="Cargar Rom"
+				Click="MenuItem_Click_1" />
+			<MenuItem
+				Header="   " />
+			<MenuItem
+				Header="Sobre"
+				Click="MenuItem_Click" />
+		</Menu>
+		<Image
+			x:Name="imgDecoración"
+			Grid.Row="1" />
+		<Button
+			x:Name="btnPonerOQuitar"
+			Grid.Row="2"
+			Content="Quitar mensaje!"
+			IsEnabled="False"
+			Click="btnPonerOQuitar_Click" />
+	</Grid>
 </Window>

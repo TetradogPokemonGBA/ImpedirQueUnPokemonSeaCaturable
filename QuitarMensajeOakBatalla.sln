@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Visual Studio 2012
+# SharpDevelop 5.1
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaMTBW", "SistemaMTBW\SistemaMTBW.csproj", "{99B79F97-863D-44BA-A734-0E03FE4EE0BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonGBAFrameWork", "..\..\..\..\Programas\PokemonGBAFrameWork\PokemonGBAFrameWork\PokemonGBAFrameWork.csproj", "{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuitarMensajeOakBatalla", "SistemaMTBW\QuitarMensajeOakBatalla.csproj", "{99B79F97-863D-44BA-A734-0E03FE4EE0BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +16,6 @@ Global
 		{99B79F97-863D-44BA-A734-0E03FE4EE0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99B79F97-863D-44BA-A734-0E03FE4EE0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99B79F97-863D-44BA-A734-0E03FE4EE0BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

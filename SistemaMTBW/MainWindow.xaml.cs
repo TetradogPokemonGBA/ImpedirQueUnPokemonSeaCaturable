@@ -1,7 +1,6 @@
-﻿using Gabriel.Cat;
+﻿
 using Gabriel.Cat.Extension;
 using Microsoft.Win32;
-using PokemonGBAFrameWork;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using PokemonGBAFrameWork;
 namespace SistemaMTBW
 {
     /// <summary>
@@ -25,7 +24,7 @@ namespace SistemaMTBW
     /// </summary>
     public partial class MainWindow : Window
     {
-        RomGBA rom;
+        RomData rom; 
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace SistemaMTBW
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Esta aplicación pone el sistema de MT de Blanco y Negro que simplemente hace que no se gasten las MT cuando se usen.\n\nBug conocido: solo se gastan si se cancela la animación de aprender la MT\n\nDesarrollado por Pikachu240 investigado por FBI y BLAx501! ","Sobre la App");
+            MessageBox.Show("Esta aplicación quita y pone el mensaje que da el profesor oak\nCreditos:Knizz por la investigacion y a SkySpecial15 por publicarlo","Sobre la App");
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -44,17 +43,16 @@ namespace SistemaMTBW
             {
                 if (opnRom.ShowDialog().GetValueOrDefault())
                 {
-                    rom = new RomGBA(opnRom.FileName);
+                    rom = new RomData(opnRom.FileName);
                     PonTexto();
-                    btnPonerOQuitar.IsEnabled = true;
-                    switch(Edicion.GetEdicion(rom).AbreviacionRom)
+                   
+                    switch(rom.Edicion.AbreviacionRom)
                     {
-                        case Edicion.ABREVIACIONESMERALDA:imgDecoración.SetImage(Imagenes.PokeballEsmeralda);break;
-                        case Edicion.ABREVIACIONROJOFUEGO: imgDecoración.SetImage(Imagenes.PokeballRojoFuego); break;
-                        case Edicion.ABREVIACIONVERDEHOJA: imgDecoración.SetImage(Imagenes.PokeballVerdeHoja); break;
-                        case Edicion.ABREVIACIONRUBI: imgDecoración.SetImage(Imagenes.PokeballRuby); break;
-                        case Edicion.ABREVIACIONZAFIRO: imgDecoración.SetImage(Imagenes.PokeballZafiro); break;
+                        case AbreviacionCanon.BPR: imgDecoración.SetImage(Imagenes.PokeballRojoFuego); break;
+                        case AbreviacionCanon.BPG: imgDecoración.SetImage(Imagenes.PokeballVerdeHoja); break;
+                        default:throw new Exception();
                     }
+                     btnPonerOQuitar.IsEnabled = true;
                 }
                 else if(rom!=null)
                 {
@@ -68,36 +66,42 @@ namespace SistemaMTBW
                 btnPonerOQuitar.IsEnabled = false;
                 rom = null;
                 imgDecoración.SetImage(new Bitmap(1, 1));
-                MessageBox.Show("La rom no es compatible","Aun no es universal...");
+                MessageBox.Show("La rom no es compatible","Solo acepta ediciones de Kanto");
             }
         }
 
         private void PonTexto()
         {
-           if(PokemonGBAFrameWork.SistemaMTBW.EstaActivado(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
+        	if(PokemonGBAFrameWork.QuitarTutorialBatallaOak.EstaActivado(rom))
             {
-                btnPonerOQuitar.Content = "Volver al sistema anterior";
+                btnPonerOQuitar.Content = "Poner mensaje";
             }
            else
             {
-                btnPonerOQuitar.Content = "Poner Sistema MT BW!";
+                btnPonerOQuitar.Content = "Quitar mensaje!";
             }
         }
 
         private void btnPonerOQuitar_Click(object sender, RoutedEventArgs e)
         {
-            if (PokemonGBAFrameWork.SistemaMTBW.EstaActivado(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom)))
+            if (PokemonGBAFrameWork.QuitarTutorialBatallaOak.EstaActivado(rom))
             {
-                PokemonGBAFrameWork.SistemaMTBW.Desactivar(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
+            	PokemonGBAFrameWork.QuitarTutorialBatallaOak.Desactivar(rom);
              
             }
             else
             {
-                PokemonGBAFrameWork.SistemaMTBW.Activar(rom, Edicion.GetEdicion(rom), CompilacionRom.GetCompilacion(rom));
+              PokemonGBAFrameWork.QuitarTutorialBatallaOak.Activar(rom);
    
             }
             PonTexto();
-            rom.Guardar();
+            try{
+            	rom.Rom.Save();
+            }
+            catch{
+            	if(MessageBox.Show("No se ha podido guardar los cambios...puede que otro programa tenga la rom ocupada\nDesas guardar un backup?","Hay problemas",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)
+            		rom.Rom.BackUp();
+            }
         }
     }
 }
