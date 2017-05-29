@@ -74,7 +74,7 @@ namespace SistemaMTBW
 
         private void PonTexto()
         {
-        	if(PokemonGBAFrameWork.QuitarTutorialBatallaOak.EstaActivado(rom))
+        	if(PokemonGBAFrameWork.ImpedirCapturaViaScript.EstaActivado(rom))
             {
                 btnImpedirCaptura.Content = "Sistema captura original ";
             }
