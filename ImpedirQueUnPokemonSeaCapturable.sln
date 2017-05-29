@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # SharpDevelop 5.1
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuitarMensajeOakBatalla", "SistemaMTBW\QuitarMensajeOakBatalla.csproj", "{99B79F97-863D-44BA-A734-0E03FE4EE0BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpedirQueUnPokemonSeaCapturable", "QuitarMensajeOak\ImpedirQueUnPokemonSeaCapturable.csproj", "{99B79F97-863D-44BA-A734-0E03FE4EE0BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

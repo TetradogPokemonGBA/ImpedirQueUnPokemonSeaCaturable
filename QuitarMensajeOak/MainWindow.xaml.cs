@@ -1,4 +1,5 @@
 ﻿
+using Gabriel.Cat;
 using Gabriel.Cat.Extension;
 using Microsoft.Win32;
 using System;
@@ -32,8 +33,8 @@ namespace SistemaMTBW
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-        	if(MessageBox.Show("Esta aplicación quita y pone el mensaje que da el profesor oak\nCreditos:Knizz por la investigacion y a SkySpecial15 por publicarlo\n¿Quieres ver el código fuente?","Sobre la App",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)
-        		System.Diagnostics.Process.Start("https://github.com/TetradogPokemonGBA/QuitarMensajeBatallaOak");
+        	if(MessageBox.Show("Esta aplicacion hece que puedas impedir mediante script que se pueda capturar un pokemon créditos a FBI de PokemonCommunity por el código ASM\n¿Quieres ver el código fuente?","Sobre la App",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)
+        		System.Diagnostics.Process.Start("https://github.com/TetradogPokemonGBA/ImpedirQueUnPokemonSeaCaturable");
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -53,7 +54,7 @@ namespace SistemaMTBW
                         case AbreviacionCanon.BPG: imgDecoración.SetImage(Imagenes.PokeballVerdeHoja); break;
                         default:throw new Exception();
                     }
-                     btnPonerOQuitar.IsEnabled = true;
+                     btnImpedirCaptura.IsEnabled = true; 
                 }
                 else if(rom!=null)
                 {
@@ -64,7 +65,7 @@ namespace SistemaMTBW
                 }
             }catch
             {
-                btnPonerOQuitar.IsEnabled = false;
+                btnImpedirCaptura.IsEnabled = false;
                 rom = null;
                 imgDecoración.SetImage(new Bitmap(1, 1));
                 MessageBox.Show("La rom no es compatible","Solo acepta ediciones de Kanto");
@@ -75,24 +76,25 @@ namespace SistemaMTBW
         {
         	if(PokemonGBAFrameWork.QuitarTutorialBatallaOak.EstaActivado(rom))
             {
-                btnPonerOQuitar.Content = "Poner mensaje";
+                btnImpedirCaptura.Content = "Sistema captura original ";
             }
            else
             {
-                btnPonerOQuitar.Content = "Quitar mensaje!";
+                btnImpedirCaptura.Content = "Impedir captura";
             }
         }
 
         private void btnPonerOQuitar_Click(object sender, RoutedEventArgs e)
         {
-            if (PokemonGBAFrameWork.QuitarTutorialBatallaOak.EstaActivado(rom))
+        	PokemonGBAFrameWork.ImpedirCapturaViaScript.Variable=(int)(Hex)txtVariable.Text;//me falta sacar la variable al cargar si esta activada...
+            if (PokemonGBAFrameWork.ImpedirCapturaViaScript.EstaActivado(rom))
             {
-            	PokemonGBAFrameWork.QuitarTutorialBatallaOak.Desactivar(rom);
+            	PokemonGBAFrameWork.ImpedirCapturaViaScript.Desactivar(rom);
              
             }
             else
             {
-              PokemonGBAFrameWork.QuitarTutorialBatallaOak.Activar(rom);
+              PokemonGBAFrameWork.ImpedirCapturaViaScript.Activar(rom);
    
             }
             PonTexto();
